@@ -9,6 +9,10 @@ const instance = axios.create({
 export const ExchangeRatesAPI = {
     getBase: (value) => {
         return instance(`latest?${API_KEY}&base_currency=${value}&currencies=UAH`)
-            .then(response => response.data.data)
+            .then(response => response.data.data);
+    },
+    getCurrenciesToUsd: () => {
+      return instance(`latest?${API_KEY}&currencies=USD,EUR,PLN,UAH`)
+          .then(response => response.data.data);
     }
 }
