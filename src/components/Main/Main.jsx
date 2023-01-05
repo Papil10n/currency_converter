@@ -1,12 +1,12 @@
 const Main = () => {
     return (
-        <main className="flex justify-center flex-auto ">
+        <main className="flex justify-center flex-auto mb-20">
             <div className="cont flex">
                 <div className="leftItem flex flex-col mr-[50px] items-center">
                     <input type="number" placeholder="0"
-                           className="max-w-[255px] mb-4 text-[40px] font-[Arial] text-center border placeholder:text-center dark:bg-[#575757] dark:text-white dark:border-white"/>
+                           className="max-w-[255px] mb-4 text-[40px] font-[Arial] text-center border border-black placeholder:text-center dark:bg-[#575757] dark:text-white dark:border-white"/>
                     <select defaultValue="UAH"
-                            className="w-[212px] h-[37px] text-[20px] text-[Jost] text-center border dark:bg-[#575757] dark:text-white dark:border-[#A0FF88]">
+                            className="w-[212px] h-[37px] text-[20px] text-[Jost] text-center border border-[#22A900] dark:bg-[#575757] dark:text-white dark:border-[#A0FF88]">
                         <option value="UAH">UAH</option>
                         <option value="EUR">EUR</option>
                         <option value="USD">USD</option>
@@ -14,9 +14,9 @@ const Main = () => {
                 </div>
                 <div className="rightItem flex flex-col ml-[50px] items-center">
                     <input type="number" placeholder="0"
-                           className="max-w-[255px] mb-4 text-[40px] font-[Arial] text-center border placeholder:text-center dark:bg-[#575757] dark:text-white dark:border-white"/>
+                           className="max-w-[255px] mb-4 text-[40px] font-[Arial] text-center border border-black placeholder:text-center dark:bg-[#575757] dark:text-white dark:border-white"/>
                     <select defaultValue="USD"
-                            className="w-[212px] h-[37px] text-[20px] text-[Jost] text-center border dark:bg-[#575757] dark:text-white dark:border-[#A0FF88]">
+                            className="w-[212px] h-[37px] text-[20px] text-[Jost] text-center border border-[#22A900] dark:bg-[#575757] dark:text-white dark:border-[#A0FF88]">
                         <option value="UAH">UAH</option>
                         <option value="EUR">EUR</option>
                         <option value="USD">USD</option>
