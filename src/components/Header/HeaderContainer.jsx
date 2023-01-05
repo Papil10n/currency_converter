@@ -7,7 +7,6 @@ const HeaderContainer = (props) => {
 
     useEffect(() => {
         props.updateExchangeRates()
-
     });
 
     return <Header usd={props.usd} eur={props.eur}/>;

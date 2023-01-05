@@ -13,7 +13,6 @@ let initialState = {
     leftCurrency: "UAH",
     rightValue: "",
     rightCurrency: "USD",
-    readyToConvert: false,
 };
 
 // reducer
@@ -35,17 +34,16 @@ const mainReducer = (state = initialState, action) => {
 }
 
 // action creator
-const setCurrenciesToUsd = (currencies) => ({type: SET_CURRENCIES_TO_USD, currencies});
+export const setCurrenciesToUsd = (currencies) => ({type: SET_CURRENCIES_TO_USD, currencies});
 export const setInputValue = (side, value) => ({type: SET_INPUT_VALUE, side, value});
 export const setCurrency = (side, currency) => ({type: SET_CURRENCY, side, currency});
 
 // thunk creator
 export const updateCurrenciesToUsd = () => async (dispatch) => {
-    // const data = await ExchangeRatesAPI.getCurrenciesToUsd();
-    // dispatch(setCurrenciesToUsd(data));
+    const data = await ExchangeRatesAPI.getCurrenciesToUsd();
+    dispatch(setCurrenciesToUsd(data));
 }
 export const calculateCurrencies = (data, intCrncy, toCrncy, intValue, toSide) => (dispatch) => {
-    console.log(data, intCrncy, toCrncy, intValue, toSide)
     const value = intValue / data[intCrncy];
     let result = toCrncy === 'USD' ? value : value * data[toCrncy];
 

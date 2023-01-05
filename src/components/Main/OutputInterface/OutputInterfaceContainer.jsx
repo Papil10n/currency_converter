@@ -1,36 +1,38 @@
 import {connect} from "react-redux";
 import OutputInterface from "./OutputInterface";
 import {calculateCurrencies, setCurrency, setInputValue} from "../../../redux/mainReducer";
+import Preloader from "../../../common/Preloader";
 
-const data = {
-    UAH: 39,
-    USD: 1,
-    EUR: 1.1,
-    PLN: 4
-}
 
 const OutputInterfaceContainer = (props) => {
 
     const calculate = (val, cur) => {
-        props.calculateCurrencies(data, cur, props.leftCurrency, parseFloat(val), "leftValue");
+        props.calculateCurrencies(props.currenciesToUsd, cur, props.leftCurrency, parseFloat(val), "leftValue");
     }
 
     const setNewCurrency = (elem) => {
         const currency = elem.currentTarget.value;
         props.setCurrency("rightCurrency", currency);
-        calculate(props.rightValue, currency);
+        if (props.rightValue) {
+            calculate(props.rightValue, currency);
+        }
     }
 
     const setInputValue = (elem) => {
         const value = elem.currentTarget.value;
-        props.setInputValue("rightValue", value);
-        if (value && !isNaN(value)) calculate(value, props.rightCurrency);
+        if (value.length < 7) {
+            props.setInputValue("rightValue", value);
+            if (value && !isNaN(value)) calculate(value, props.rightCurrency);
+        }
     }
 
 
-    return <OutputInterface setInputValue={setInputValue} rightValue={props.rightValue}
-                            rightCurrency={props.rightCurrency}
-                            setNewCurrency={setNewCurrency}/>
+    return <>
+        {Object.keys(props.currenciesToUsd).length === 0 ? <Preloader/> :
+            <OutputInterface setInputValue={setInputValue} rightValue={props.rightValue}
+                             rightCurrency={props.rightCurrency}
+                             setNewCurrency={setNewCurrency}/>}
+    </>
 }
 
 const mstp = (state) => {

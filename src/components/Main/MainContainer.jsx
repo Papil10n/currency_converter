@@ -4,17 +4,17 @@ import {connect} from "react-redux";
 import {useEffect} from "react";
 
 const MainContainer = (props) => {
+    console.log('rendered')
+
     useEffect(() => {
         props.updateCurrenciesToUsd();
     })
 
-    return <Main currencies={props.currencies}/>
+    return <Main/>
 }
 
-const mstp = (state) => {
-    return {
-        currencies: state.mainReducer.currenciesToUsd,
-    }
+const mstp = () => {
+    return {}
 }
 
 export default connect(mstp, {updateCurrenciesToUsd})(MainContainer);

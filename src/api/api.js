@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = "apikey=B3xd2CouFBATE0LLpuUjG7UBP60FOOx3h6FEbRNE";
+const API_KEY = "apikey=pYFlAVIXjLOca5xS1RtMfxJrYaBCbZRN54Nh72J4";
 
 const instance = axios.create({
     baseURL: `https://api.currencyapi.com/v3`,
@@ -12,7 +12,7 @@ export const ExchangeRatesAPI = {
             .then(response => response.data.data);
     },
     getCurrenciesToUsd: () => {
-      return instance(`latest?${API_KEY}&currencies=USD,EUR,PLN,UAH`)
-          .then(response => response.data.data);
+        return instance(`latest?${API_KEY}&currencies=USD,EUR,PLN,UAH`)
+            .then(response => response.data.data);
     }
 }
